@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<title>百千学堂</title>
+		<style type="text/css">
+			body {
+				background-color: #181e25;
+			}
+			
+			.con-body {
+				width: 100%;
+				height: 100%;
+				position: relative;
+			}
+			
+			.con-body>img {
+				width: 100%;
+				height: 100%;
+				top: 100px;
+				position: relative;
+			}
+		</style>
+	</head>
+
+	<body ontouchstart>
+		<div class="con-body">
+			<img src="img/loading.gif" />
+		</div>
+		<script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+		<script src="plugins/common/controlsHelper.js"></script>
+		<script src="plugins/common/dataHelper.js"></script>
+		<script type="text/javascript">
+			/*
+			 * 链接参数分为
+			 */
+			$(function() {
+				var types = dataHelper.QueryString('t');
+				var code = dataHelper.QueryString('c'); //产品id
+				if(types == 'xet') {
+					if((navigator.userAgent.indexOf("MQQBrowser") >= 0 && navigator.userAgent.indexOf("PA QQ") < 0) || navigator.userAgent.indexOf("MicroMessenger") >= 0) {
+						//微信支付		
+//						window.location.href='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx66128bb2d91d4bf8&redirect_uri=https://platform.h5.xiaoe-tech.com/platform/c_auth_center/universal_bind/eyJ3eF9hcHBfaWQiOm51bGwsImFwcF9pZCI6ImFwcGJraTRyOEN5NTcyNyIsInRhcmdldF91cmwiOiJodHRwczpcL1wvYXBwYmtpNHI4Y3k1NzI3Lmg1LnhpYW9la25vdy5jb21cLzYzdzBzR0pxMyJ9&response_type=code&scope=snsapi_base&state=StatePlatformLogin'
+						window.location.href = 'https://appbki4r8Cy5727.h5.xeknow.com/st/' + code;
+					} else {
+						controlsHelper.alert('请使用微信打开')
+					}
+				}
+			});
+		</script>
+	</body>
+
+</html>

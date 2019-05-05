@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+		<meta name="author" content="All-Union.com.cn">
+		<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+		<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+		<META HTTP-EQUIV="expires" CONTENT="0">
+		<title>百千学堂管理系统</title>
+		<meta name="keywords" content="关键字">
+		<meta name="description" content="描述">
+		<link rel="stylesheet" href="plugins/theme/css/custom-bootstrap.css">
+		<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.css">
+		<link rel="stylesheet" href="css/index.css" />
+		<style>
+			*:not(.fa) {
+				font-family: '微软雅黑', 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+			}
+		</style>
+	</head>
+
+	<body class="theme fixed">
+		<div class="wrapper">
+			<header class="main-header">
+				<!--<a class="logo">
+					<span class="logo-lg"><img src="img/logo.png"></span>
+				</a>-->
+				<nav class="navbar navbar-static-top" role="navigation">
+					<a href="#" class="sidebar-toggle fa fa-bars" data-toggle="offcanvas" role="button">
+						<span class="sr-only">导航隐藏按钮</span>
+					</a>
+
+					<div class="navbar-custom-menu">
+						<!--顶部用户信息-->
+						<ul class="nav navbar-nav">
+							<li>
+								<a><i class="fa fa-user"></i><label id="userName"> 王老师</label> </a>
+							</li>
+							<li>
+								<a id="exit"><i class="fa fa-power-off "></i></a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</header>
+			<aside class="main-sidebar">
+				<section class="sidebar">
+					<!--左侧主菜单-->
+
+					<span class="logo-lg span-logo"><img src="img/logo.png"></span>
+
+					<ul class="sidebar-menu" id="mainMenuList">
+						<li class="treeview ">
+							<a href="#">
+								<i class="fa"><img src="img/01.png"/></i><span>用户管理</span><i class="fa fa-angle-left pull-right"></i>
+							</a>
+							<ul class="treeview-menu">
+								<li>
+									<a data-pageName="userManage/userList.html"><i class="fa fa-circle-o"></i>用户列表</a>
+								</li>
+								<!--<li>
+									<a data-pageName="userManage/insertUser.html"><i class="fa fa-circle-o"></i>新增用户</a>
+								</li>-->
+								<li>
+									<a data-pageName="userManage/managerList.html"><i class="fa fa-circle-o"></i>管理员列表</a>
+								</li>
+								<!--<li>
+									<a data-pageName="userManage/insertManager.html"><i class="fa fa-circle-o"></i>新增管理员</a>
+								</li>-->
+							</ul>
+						</li>
+						<li>
+							<a href="#">
+								<i class="fa"><img src="img/02.png"/></i><span>班级管理</span><i class="fa fa-angle-left pull-right"></i>
+							</a>
+							<ul class="treeview-menu">
+								<li>
+									<a data-pageName="classManage/classList.html"><i class="fa fa-circle-o"></i>班级列表</a>
+								</li>
+								<li>
+									<a data-pageName="classManage/schoolList.html"><i class="fa fa-circle-o"></i>学校列表</a>
+								</li>
+								<li>
+									<a data-pageName="classManage/teacherList.html"><i class="fa fa-circle-o"></i>导师列表</a>
+								</li>
+								<!--<li>
+									<a data-pageName="classManage/insertTeacher.html"><i class="fa fa-circle-o"></i>新增导师</a>
+								</li>-->
+
+							</ul>
+						</li>
+						<li>
+							<a href="#">
+								<i class="fa"><img src="img/03.png"/></i><span>活动管理</span> <i class="fa fa-angle-left pull-right"></i>
+							</a>
+
+							<ul class="treeview-menu">
+								<li>
+									<a data-pageName="activeManage/activeList.html"><i class="fa fa-circle-o"></i>活动列表</a>
+								</li>
+								<li>
+									<a data-pageName="activeManage/detailList.html"><i class="fa fa-circle-o"></i>明细列表</a>
+								</li>
+								<li>
+									<a data-pageName="activeManage/registerList.html"><i class="fa fa-circle-o"></i>活动报名列表</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">
+								<i class="fa"><img src="img/04.png"/></i><span>码表管理</span> <i class="fa fa-angle-left pull-right"></i>
+							</a>
+
+							<ul class="treeview-menu">
+								<li>
+									<a data-pageName="dataManage/dictionaryList.html"><i class="fa fa-circle-o"></i>码表信息列表</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">
+								<i class="fa fa-list"></i><span>设置</span> <i class="fa fa-angle-left pull-right"></i>
+							</a>
+
+							<ul class="treeview-menu">
+								<li>
+									<a data-pageName="setting/setting.html"><i class="fa fa-circle-o"></i>修改密码</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+			</aside>
+			<div class="content-wrapper">
+				<div id="moreNavBox">
+					<!--超宽缩小功能，待开发-->
+					<div class="moreNav " data-nav="left"><i class="fa fa-angle-double-left"></i></div>
+					<ul class="nav nav-tabs " id="indexTab"></ul>
+					<div class="moreNav " data-nav="right"><i class="fa fa-angle-double-right"></i></div>
+					<div class="noMore">
+						<p></p>
+					</div>
+				</div>
+				<div class="tab-content" id="iframeBox" style="width: 100%;height: 100%"></div>
+			</div>
+			<footer class="main-footer">
+				<div class="pull-right hidden-xs">
+					<b>V </b> 1.0
+				</div>
+				百千学堂
+			</footer>
+		</div>
+
+		<script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+		<script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
+		<script src="plugins/theme/bootstrap/bootstrap.min.js"></script>
+		<script src="plugins/theme/js/app.min.js"></script>
+		<script src="plugins/common/jquery.cookie.js"></script>
+		<script src="plugins/common/common.js"></script>
+		<script src="plugins/theme/js/index_flot.js"></script>
+		<script src="plugins/common/dataHelper.js"></script>
+		<script src="plugins/common/controlsHelper.js"></script>
+		<script src="js/index.js"></script>
+	</body>
+
+</html>

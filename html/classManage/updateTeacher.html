@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+		<meta name="author" content="All-Union.com.cn">
+		<title>修改导师</title>
+		<link rel="stylesheet" href="../../plugins/theme/css/custom-bootstrap-inside.css">
+		<link rel="stylesheet" href="../../plugins/daterangepicker/daterangepicker-bs3.css">
+		<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.css">
+		<style>
+			select.monthselect {
+				top: 2px;
+				position: relative;
+			}
+			
+			select.monthselect,
+			select.yearselect {
+				padding: 4px !important;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<section class="content">
+			<h2 class="page-header">修改导师</h2>
+
+			<div class="box">
+				<div class="col-xs-12">&nbsp;</div>
+				<div class="col-xs-12">&nbsp;</div>
+				<div class="box-header ">
+					<form class="form-horizontal" autocomplete="off" id="signupForm" method="get" action="">
+						<div class="form-group">
+							<label class="col-xs-2 control-label">导师名称：</label>
+							<div class="col-xs-5">
+								<input type="text" class="form-control" placeholder="请输入导师名称" maxlength="30" id="teacherName" name="teacherName">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-2 control-label">导师电话：</label>
+							<div class="col-xs-5">
+								<input type="text" class="form-control" placeholder="请输入导师电话" maxlength="11" id="teacherPhone" name="teacherPhone">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-2 control-label">性别：</label>
+							<div class="col-xs-5">
+								<div class="radio" id="isComOrP">
+									<label for="level1">
+										<input type="radio" name="optionsRadios" id="teacherSexG" value="1" checked="checked">男&nbsp;&nbsp;
+									</label>
+									<label for="level2">
+										<input type="radio" name="optionsRadios" id="teacherSexM" value="2">女
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-2 control-label">出生日期：</label>
+							<div class="col-xs-5">
+								<div class="input-group col-xs-3 pull-left">
+									<div class="input-group-addon">
+										<i class="fa fa-calendar"></i>
+									</div>
+									<input type="text" readonly class="form-control" id="reservation1" name="reservation1" placeholder="出生日期">
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-2 control-label">导师照片：</label>
+							<div class="col-xs-2">
+								<img class="mailbox-attachment-icon imgName1 " src="../../plugins/theme/img/nopic.jpg">
+								<div class=" mailbox-attachment-info col-xl-2 ">
+									<input style="display: none;" id="imgName1" name="imgName1" />
+									<!-- 文件上传返回信息显示区 -->
+									<a href="" class="mailbox-attachment-name files img1"><i class="fa fa-paperclip"></i> 选择图片</a>
+
+									<div class="progress progress-xxs">
+										<!-- 文件上传进度条 -->
+										<div class="progress-bar progress-bar-success progress-bar-striped"></div>
+									</div>
+									<span class="mailbox-attachment-size">1,245 KB
+                                         <span class="btn btn-default fileinput-button btn-xs pull-right">
+                                              <i class="fa fa-plus"></i><input type="file" name="files[]" data-index="0"  id="img1" name="img1" multiple>
+                                           </span>
+									</span>
+								</div>
+
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-2 control-label">资质说明：</label>
+							<div class="col-xs-5">
+								<textarea id="teacherQualification" name="teacherQualification" type="text" style="width: 100%;" rows="4" class="form-control" maxlength="1300" placeholder="请输入资质说明"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-2 control-label">搜索关键字：</label>
+							<div class="col-xs-5">
+								<textarea id="teacherKeyword" name="teacherKeyword" type="text" style="width: 100%;" rows="3" class="form-control" maxlength="600" placeholder="请输入关键字"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-2 control-label">状态：</label>
+							<div class="col-xs-4">
+								<label class="control-label">
+									<input type="checkbox" checked="checked" id="userIsStart" name="userIsStart">启用</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-xs-offset-2 col-xs-6">
+								<button type="button" class="btn btn-sm btn-primary" name='n' id="Determine">确定修改</button>
+								<button type="button" class="btn btn-sm btn-primary" name="n" id="cancelBtn">取消</button>
+							</div>
+						</div>
+					</form>
+					<div class="col-xs-12">&nbsp;</div>
+					<div class="col-xs-12">&nbsp;</div>
+				</div>
+				<!-- /.box-header -->
+			</div>
+			<!-- /.box -->
+		</section>
+		<script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+		<script src="../../plugins/theme/bootstrap/bootstrap.min.js"></script>
+		<script src="../../plugins/theme/js/app.min.js"></script>
+		<script src="../../plugins/common/common.js"></script>
+		<script src="../../plugins/theme/js/index_flot.js"></script>
+		<script src="../../plugins/common/jquery.cookie.js"></script>
+
+		<script src="../../plugins/jQueryfileupload/jquery.ui.widget.js"></script>
+		<script src="../../plugins/jQueryfileupload/jquery.fileupload.js"></script>
+		<script src="../../plugins/jQueryfileupload/jquery.iframe-transport.js"></script>
+		<script src="../../plugins/jQueryfileupload/jquery.xdr-transport.js"></script>
+		<script src="../../plugins/jQueryValidate/jquery.validate.min.js"></script>
+		<script src="../../plugins/jQueryValidate/messages_zh.js"></script>
+		<script src="../../plugins/common/regularHelper.js"></script>
+
+		<script src="../../plugins/daterangepicker/moment.min.js"></script>
+		<script src="../../plugins/daterangepicker/daterangepicker.js"></script>
+		<script src="../../plugins/datepicker/bootstrap-datepicker.js"></script>
+
+		<!--本页面需要的脚本-->
+
+		<script src="../../plugins/common/mustache.min.js"></script>
+		<script src="../../plugins/common/dataHelper.js"></script>
+		<script src="../../plugins/common/controlsHelper.js"></script>
+		<script src="../../interfaceJs/dataValueHelper.js"></script>
+		<script src="../../interfaceJs/userInfoServer.js"></script>
+		<script src="../../interfaceJs/classInfoServer.js"></script>
+		<script src="../../js/classManage/updateTeacher.js"></script>
+		<script>
+			$.validator.setDefaults({
+				debug: true
+			});
+			var imgRegular = /^image\/(jpe?g|png|bmp|gif)$/i;
+			var errorTips = "请上传.jpg .jpeg .bmp .gif .png格式文件";
+			//上传
+			controlsHelper.FileUploadControl(fileUploadUrl, "#img1", "#imgName1", imgRegular, errorTips, ".img1", ".imgName1");
+
+			function fromValidate() {
+				return $("#signupForm").validate({
+					/**/
+					/* 设置验证规则 */
+					rules: {
+						teacherName: {
+							required: true
+						},
+						teacherQualification: {
+							required: true
+						},
+						teacherKeyword: {
+							required: true
+						},
+						teacherPhone: {
+							required: true,
+							isMobile: true
+						}
+					},
+					/**/
+					/* 设置错误信息 */
+					messages: {
+						teacherName: {
+							required: "请输入导师名称"
+						},
+						teacherQualification: {
+							required: "请输入资质说明"
+						},
+						teacherKeyword: {
+							required: "请输入搜索关键字"
+						},
+						teacherPhone: {
+							required: "请输入手机号",
+							isMobile: "手机号格式不正确"
+						}
+					},
+					/* 设置错误信息提示DOM */
+					errorPlacement: function(error, element) {
+						error.appendTo(element.parent());
+					},
+				});
+			};
+
+			(function() {
+				timePicker();
+			})();
+
+			function timePicker() {
+				$('#reservation1').daterangepicker({
+					singleDatePicker: true,
+					showDropdowns: true,
+					maxDate: new Date()
+				}, function(start, end, label) { //格式化日期显示框
+					if(!start._isValid) {
+						$('#reservation1').val(startDateTemp.format('YYYY-MM-DD'));
+					} else {
+						$('#reservation1').val(start.format('YYYY-MM-DD'));
+					}
+				}).click(function() {
+					$(document).keydown(function(e) {
+						if(e.keyCode == 17 || e.keyCode == 18) {
+							return false;
+						}
+					});
+				});
+
+			}
+		</script>
+	</body>
+
+</html>

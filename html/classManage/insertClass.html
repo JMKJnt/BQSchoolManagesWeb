@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+		<meta name="author" content="All-Union.com.cn">
+		<title>添加班级</title>
+		<link rel="stylesheet" href="../../plugins/theme/css/custom-bootstrap-inside.css">
+		<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.css">
+		<style type="text/css">
+			.student {
+				border: 1px solid #CCCCCC;
+				height: 300px;
+				;
+				max-height: 300px;
+				overflow-y: auto;
+			}
+			
+			.student-head {
+				margin-top: 10px;
+			}
+			
+			.checkAll {
+				margin-left: 50px;
+			}
+			
+			#studentList {
+				list-style: none;
+				margin-left: 10px;
+			}
+			
+			#studentList li {
+				display: inline;
+				line-height: 40px;
+				float: left;
+				margin-right: 15px;
+			}
+			
+			.tips-label-color {
+				color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<section class="content">
+			<h2 class="page-header">添加班级</h2>
+
+			<div class="box">
+				<div class="col-xs-12">&nbsp;</div>
+				<div class="col-xs-12">&nbsp;</div>
+				<div class="box-header ">
+					<form class="form-horizontal" autocomplete="off" id="signupForm" method="get" action="">
+						<div class="form-group">
+							<label class="col-xs-2 control-label">班级名称：</label>
+							<div class="col-xs-5">
+								<input type="text" class="form-control" placeholder="请输入名称" maxlength="30" id="className" name="className">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-2 control-label">选择学校：</label>
+							<div class="col-xs-5">
+								<div class="btn-group">
+									<button type="button" class="btn btn-default btn-flat school error" name="school" data-value="">请选择学校</button>
+									<button type="button" class="btn btn-default btn-flat dropdown-toggle" data-toggle="dropdown" name="name">
+										<span class="caret"></span>
+										<span class="sr-only"></span>
+									</button>
+									<ul class="dropdown-menu" role="menu" id="school">
+
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-2 control-label">学校地址：</label>
+							<div class="col-xs-5">
+								<input type="text" class="form-control" readonly="readonly" id="classSchoolAddress" name="classSchoolAddress" maxlength="150">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-2 control-label">班级描述：</label>
+							<div class="col-xs-5">
+								<textarea id="classDesc" name="classDesc" type="text" style="width: 100%;" rows="3" class="form-control" maxlength="300" placeholder="请输入班级描述"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-2 control-label">班级年段：</label>
+
+							<div class="col-xs-5">
+								<div class="btn-group">
+									<button type="button" class="btn btn-default btn-flat classDivision error" name="classDivision" data-value="">请选择年段</button>
+									<button type="button" class="btn btn-default btn-flat dropdown-toggle" data-toggle="dropdown" name="name">
+										<span class="caret"></span>
+										<span class="sr-only"></span>
+									</button>
+									<ul class="dropdown-menu" role="menu" id="classDivision">
+
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-2 control-label">班级级别：</label>
+							<div class="col-xs-5">
+								<div class="btn-group">
+									<button type="button" class="btn btn-default btn-flat classLevel error" name="classLevel" data-value="">请选择级别</button>
+									<button type="button" class="btn btn-default btn-flat dropdown-toggle" data-toggle="dropdown" name="name">
+										<span class="caret"></span>
+										<span class="sr-only"></span>
+									</button>
+									<ul class="dropdown-menu" role="menu" id="classLevel">
+
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-2 control-label">班主任：</label>
+
+							<div class="col-xs-5">
+								<div class="btn-group">
+									<button type="button" class="btn btn-default btn-flat classTeacher error" name="classTeacher" data-value="">请选择老师</button>
+									<button type="button" class="btn btn-default btn-flat dropdown-toggle" data-toggle="dropdown" name="name">
+										<span class="caret"></span>
+										<span class="sr-only"></span>
+									</button>
+									<ul class="dropdown-menu" role="menu" id="classTeacher">
+
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-2 control-label">学生选择：</label>
+						</div>
+						<div class="form-group ">
+							<label class="col-xs-2 control-label"></label>
+							<div class="col-xs-8 student">
+								<div class="form-group student-head">
+									<div class="col-sm-2 checkAll">
+										<input id="checkAll" type="checkbox" name="names" /> 全选
+									</div>
+
+									<label class="col-sm-2 control-label">学生名称:</label>
+									<div class="col-sm-2">
+										<input type="text" class="form-control" placeholder="" id="studentName" name="studentName">
+									</div>
+									<div class="col-sm-1">
+										<button type="button" class="btn btn-primary" id="Viewstudent" name="Viewstudent">查看</button>
+									</div>
+									<div class="col-sm-4">
+										<p class="text-left tips-label-color">✲共<span class="TotalNumber"></span>个学生，已选中<span class="CheckedCount">0</span>个学生✲</p>
+
+									</div>
+								</div>
+								<div class="content-student">
+									<ul id="studentList">
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-2 control-label">状态：</label>
+
+							<div class="col-xs-4">
+								<label class="control-label">
+									<input type="checkbox" checked="checked" id="userIsStart" name="userIsStart">启用</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-xs-offset-2 col-xs-6">
+								<button type="button" class="btn btn-sm btn-primary" name="name" id="Determine">确定添加</button>
+								<button type="button" class="btn btn-sm btn-primary" name="s" id="cancelBtn">取消</button>
+							</div>
+						</div>
+
+					</form>
+					<div class="col-xs-12">&nbsp;</div>
+					<div class="col-xs-12">&nbsp;</div>
+				</div>
+				<!-- /.box-header -->
+			</div>
+			<!-- /.box -->
+		</section>
+		<script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+		<script src="../../plugins/theme/bootstrap/bootstrap.min.js"></script>
+		<script src="../../plugins/theme/js/app.min.js"></script>
+		<script src="../../plugins/common/common.js"></script>
+		<script src="../../plugins/theme/js/index_flot.js"></script>
+		<script src="../../plugins/common/jquery.cookie.js"></script>
+
+		<script src="../../plugins/jQueryValidate/jquery.validate.min.js"></script>
+		<script src="../../plugins/jQueryValidate/messages_zh.js"></script>
+		<script src="../../plugins/common/regularHelper.js"></script>
+
+		<!--本页面需要的脚本-->
+
+		<script src="../../plugins/common/mustache.min.js"></script>
+		<script src="../../plugins/common/dataHelper.js"></script>
+		<script src="../../plugins/common/controlsHelper.js"></script>
+		<script src="../../interfaceJs/dataValueHelper.js"></script>
+		<script src="../../interfaceJs/userInfoServer.js"></script>
+		<script src="../../interfaceJs/classInfoServer.js"></script>
+		<script src="../../js/classManage/insertClass.js"></script>
+		<script id="studentListTemplate" type="x-tmpl-mustache">
+			{{#lists}}
+			<li><input type="checkbox" data-id="{{userId}}" name="name" />{{userName}}({{nickName}})</li>
+			{{/lists}}
+		</script>
+		<script>
+			$.validator.setDefaults({
+				debug: true
+			});
+
+			function fromValidate() {
+				return $("#signupForm").validate({
+					/**/
+					/* 设置验证规则 */
+					rules: {
+						className: {
+							required: true
+						},
+						classSchool: {
+							required: true
+						},
+						classSchoolAddress: {
+							required: true
+						},
+						classDesc: {
+							required: true
+						},
+						classTeacher: {
+							isRequired: ["请选择老师"]
+						},
+						school: {
+							isRequired: ["请选择学校"]
+						},
+						classLevel: {
+							isRequired: ["请选择级别"]
+						},
+						classDivision: {
+							isRequired: ["请选择年段"]
+						}
+						
+					},
+					/**/
+					/* 设置错误信息 */
+					messages: {
+						className: {
+							required: "请输入班级名称"
+						},
+						classSchool: {
+							required: "请输入学校名称"
+						},
+						classSchoolAddress: {
+							required: "请输入学校地址"
+						},
+						classDesc: {
+							required: "请输入班级描述"
+						},
+						classTeacher: {
+							isRequired: "请选择老师"
+						},
+						school: {
+							isRequired: "请选择学校"
+						},
+						classLevel: {
+							isRequired: "请选择级别"
+						},
+						classDivision: {
+							isRequired: "请选择年段"
+						}
+					},
+					/* 设置错误信息提示DOM */
+					errorPlacement: function(error, element) {
+						error.appendTo(element.parent());
+					},
+				});
+			};
+		</script>
+	</body>
+
+</html>

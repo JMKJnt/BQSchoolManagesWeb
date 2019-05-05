@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+		<meta name="author" content="All-Union.com.cn">
+		<title>明细列表</title>
+		<link rel="stylesheet" href="../../plugins/theme/css/custom-bootstrap-inside.css">
+		<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.css">
+		<link rel="stylesheet" href="../../plugins/daterangepicker/daterangepicker-bs3.css">
+		<link rel="stylesheet" href="../../plugins/Pagination/css/pagination.css" />
+		<link rel="stylesheet" href="../../plugins/theme/css/barbox.css" />
+		<style type="text/css">
+			#ticketCodePop {
+				padding: 200px !important;
+			}
+			
+			#chartsBarG {
+				width: 200px;
+				top: 25px;
+				z-index: 99;
+				position: absolute;
+			}
+			
+			.min-w-m {
+				min-width: 660px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<section class="content">
+			<h2 class="page-header">明细列表</h2>
+			<div class="box">
+				<div class="box-header ">
+					<form class="form-horizontal" id="signupForm" method="get" action="">
+						<div class="col-xs-12">
+							<div class="col-xs-6 min-w-m">
+								<div class="form-group">
+									<label class="col-xs-4 control-label">活动主题：</label>
+									<div class="col-xs-7">
+										<input type="text" class="form-control" placeholder="输入活动主题" id="activeTheme" name="activeTheme">
+									</div>
+								</div>
+							</div>
+
+							<div class="col-xs-6 min-w-m">
+								<div class="form-group">
+									<label class="col-xs-4 control-label">活动时间：</label>
+									<div class="col-xs-8">
+										<div class="input-group col-xs-5 pull-left">
+											<div class="input-group-addon">
+												<i class="fa fa-calendar"></i>
+											</div>
+											<input type="text" readonly class="form-control" id="activeStartTime" name="activeStartTime" placeholder="开始日期">
+										</div>
+										<div class="pull-left timeAnd">至</div>
+										<div class="input-group col-xs-5 pull-left">
+											<div class="input-group-addon">
+												<i class="fa fa-calendar"></i>
+											</div>
+											<input type="text" readonly class="form-control" id="activeEndTime" name="activeEndTime" placeholder="截止日期">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12">
+							<div class="col-xs-6 min-w-m">
+								<div class="form-group">
+									<label class="col-xs-4 control-label">导师：</label>
+									<div class="col-xs-6">
+										<div class="btn-group">
+											<button type="button" class="btn btn-default btn-flat detailTeacher" name="detailTeacher" data-value="">全部</button>
+											<button type="button" class="btn btn-default btn-flat dropdown-toggle" data-toggle="dropdown" name="name">
+										<span class="caret"></span>
+										<span class="sr-only"></span>
+									</button>
+											<ul class="dropdown-menu" role="menu" id="detailTeacher">
+
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-xs-6 min-w-m">
+								<div class="form-group">
+									<label class="col-xs-4 control-label">活动类别：</label>
+									<div class="col-xs-6">
+										<div class="btn-group">
+											<button type="button" class="btn btn-default btn-flat detailCate" name="detailCate">全部</button>
+											<button type="button" class="btn btn-default btn-flat dropdown-toggle" data-toggle="dropdown" name="name">
+												<span class="caret"></span>
+												<span class="sr-only"></span>
+											</button>
+											<ul class="dropdown-menu" role="menu" id="detailCate">
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12">
+							<div class="col-xs-6 min-w-m">
+								<label class="col-xs-4 control-label"></label>
+								<div class="col-xs-6">
+									<button type="button" class="btn btn-primary" id="query">查询</button>
+									<label class="text-blue text-right" id="tipsError"></label>
+								</div>
+							</div>
+						</div>
+					</form>
+					<div>
+						<span class="text-muted">共 <span id="infoTatal">0</span>条，每页<span>20</span>条</span>
+						<div class="pull-right">
+							<button class="btn btn-primary btn-sm " id="detailAdd">新增明细信息</button>
+						</div>
+					</div>
+					<div class="box-body no-padding">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>明细主题</th>
+									<th>导师</th>
+									<th>活动时间</th>
+									<th>活动类别</th>
+									<th>是否公开</th>
+									<th>活动状态</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody id="detailList">
+
+							</tbody>
+						</table>
+						<div class="box-footer ">
+							<div class="pagination no-margin pull-right">
+								<a href="#" class="first" data-action="first">&laquo;</a>
+								<a href="#" class="previous" data-action="previous">&lsaquo;</a>
+								<input type="text" readonly="readonly" data-max-page="40" />
+								<a href="#" class="next" data-action="next">&rsaquo;</a>
+								<a href="#" class="last" data-action="last">&raquo;</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /.box-header -->
+			</div>
+			<!-- /.box -->
+		</section>
+
+		<script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+		<script src="../../plugins/theme/bootstrap/bootstrap.min.js"></script>
+		<!--<script src="../../plugins/theme/js/app.min.js"></script>-->
+		<script src="../../plugins/common/jquery.cookie.js"></script>
+		<script src="../../plugins/common/common.js"></script>
+		<script src="../../plugins/theme/js/index_flot.js"></script>
+		<script src="../../plugins/Pagination/js/pagination.min.js"></script>
+
+		<script src="../../plugins/daterangepicker/moment.min.js"></script>
+		<script src="../../plugins/daterangepicker/daterangepicker.js"></script>
+		<script src="../../plugins/datepicker/bootstrap-datepicker.js"></script>
+		<script src="../../plugins/jQueryValidate/jquery.validate.min.js"></script>
+		<script src="../../plugins/jQueryValidate/messages_zh.js"></script>
+
+		<!--本页面需要的脚本-->
+		<script src="../../plugins/common/mustache.min.js"></script>
+		<script src="../../plugins/common/dataHelper.js"></script>
+		<script src="../../plugins/common/controlsHelper.js"></script>
+		<script src="../../plugins/common/timeHelper.js"></script>
+		<script src="../../interfaceJs/dataValueHelper.js"></script>
+		<script src="../../interfaceJs/userInfoServer.js"></script>
+		<script src="../../interfaceJs/classInfoServer.js"></script>
+		<script src="../../interfaceJs/activeInfoServer.js"></script>
+		<script src="../../js/activeManage/detailList.js"></script>
+		<!--列表模版-->
+		<script id="detailListTemplate" type="x-tmpl-mustache">
+			{{#lists}}
+			<tr>
+				<td>{{detailTheme}}</td>
+				<td data-id="{{detailTeacherId}}">{{detailTeacherName}}</td>
+				<td>{{detailTime}}</td>
+				<td data-id="{{detailCate}}">{{detailCateName}}</td>
+				<td data-id="{{detailIsPublic}}">{{detailIsPublicName}}</td>
+				<td data-id="{{status}}"> {{statusName}}</td>
+				<td>
+					<span class="label label-info  updateBtn" data-id="{{detailId}}">修改</span>
+				</td>
+			</tr>
+			{{/lists}}
+
+		</script>
+		<script>
+			(function() {
+				timePicker();
+			})();
+
+			function timePicker() {
+
+				$('#activeStartTime').daterangepicker({
+					singleDatePicker: true
+				}, function(start, end, label) { //格式化日期显示框
+					if(!start._isValid) {
+						$('#activeStartTime').val(startDateTemp.format('YYYY-MM-DD'));
+					} else {
+						$('#activeStartTime').val(start.format('YYYY-MM-DD'));
+					}
+				}).click(function() {
+					$(document).keydown(function(e) {
+						if(e.keyCode == 17 || e.keyCode == 18) {
+							return false;
+						}
+					});
+				});
+				$('#activeEndTime').daterangepicker({
+					singleDatePicker: true
+				}, function(start, end, label) { //格式化日期显示框
+					if(!start._isValid) {
+						$('#activeEndTime').val(startDateTemp.format('YYYY-MM-DD'));
+					} else {
+						$('#activeEndTime').val(start.format('YYYY-MM-DD'));
+					}
+				}).click(function() {
+					$(document).keydown(function(e) {
+						if(e.keyCode == 17 || e.keyCode == 18) {
+							return false;
+						}
+					});
+				});
+			}
+		</script>
+	</body>
+
+</html>

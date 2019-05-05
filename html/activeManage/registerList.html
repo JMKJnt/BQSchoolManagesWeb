@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+		<meta name="author" content="All-Union.com.cn">
+		<title>活动报名列表</title>
+		<link rel="stylesheet" href="../../plugins/theme/css/custom-bootstrap-inside.css">
+		<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.css">
+		<link rel="stylesheet" href="../../plugins/daterangepicker/daterangepicker-bs3.css">
+		<link rel="stylesheet" href="../../plugins/Pagination/css/pagination.css" />
+		<link rel="stylesheet" href="../../plugins/theme/css/barbox.css" />
+		<style type="text/css">
+			#ticketCodePop {
+				padding: 200px !important;
+			}
+			
+			#chartsBarG {
+				width: 200px;
+				top: 25px;
+				z-index: 99;
+				position: absolute;
+			}
+			
+			.min-w-m {
+				min-width: 660px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<section class="content">
+			<h2 class="page-header">活动报名列表</h2>
+			<div class="box">
+				<div class="box-header ">
+					<form class="form-horizontal" id="signupForm" method="get" action="">
+						<div class="col-xs-12">
+							<div class="col-xs-6 min-w-m">
+								<div class="form-group">
+									<label class="col-xs-4 control-label">活动名称搜索：</label>
+									<div class="col-xs-7">
+										<input type="text" class="form-control" placeholder="输入活动名称" id="activeName" name="activeName">
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-6 min-w-m">
+								<div class="form-group">
+									<label class="col-xs-4 control-label">活动主题：</label>
+									<div class="col-xs-7">
+										<input type="text" class="form-control" placeholder="输入活动主题" id="activeTheme" name="activeTheme">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12">
+							<div class="col-xs-6 min-w-m">
+								<div class="form-group">
+									<label class="col-xs-4 control-label">报名时间：</label>
+									<div class="col-xs-8">
+										<div class="input-group col-xs-5 pull-left">
+											<div class="input-group-addon">
+												<i class="fa fa-calendar"></i>
+											</div>
+											<input type="text" readonly class="form-control" id="signStartTime" name="signStartTime" placeholder="开始日期">
+										</div>
+										<div class="pull-left timeAnd">至</div>
+										<div class="input-group col-xs-5 pull-left">
+											<div class="input-group-addon">
+												<i class="fa fa-calendar"></i>
+											</div>
+											<input type="text" readonly class="form-control" id="signEndTime" name="signEndTime" placeholder="截止日期">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-6 min-w-m">
+								<div class="form-group">
+									<label class="col-xs-4 control-label">报名审核状态：</label>
+									<div class="col-xs-6">
+										<div class="btn-group">
+											<button type="button" class="btn btn-default btn-flat registerApproveStatus" name="registerApproveStatus">全部</button>
+											<button type="button" class="btn btn-default btn-flat dropdown-toggle" data-toggle="dropdown" name="name">
+												<span class="caret"></span>
+												<span class="sr-only"></span>
+											</button>
+											<ul class="dropdown-menu" role="menu" id="registerApproveStatus">
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12">
+							<div class="col-xs-6 min-w-m">
+								<div class="form-group">
+									<label class="col-xs-4 control-label">报名来源：</label>
+									<div class="col-xs-6">
+										<div class="btn-group">
+											<button type="button" class="btn btn-default btn-flat registerSource" name="registerSource">全部</button>
+											<button type="button" class="btn btn-default btn-flat dropdown-toggle" data-toggle="dropdown" name="name">
+												<span class="caret"></span>
+												<span class="sr-only"></span>
+											</button>
+											<ul class="dropdown-menu" role="menu" id="registerSource">
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-6 min-w-m">
+								<label class="col-xs-4 control-label"></label>
+								<div class="col-xs-6">
+									<button type="button" class="btn btn-primary" id="query">查询</button>
+									<label class="text-blue text-right" id="tipsError"></label>
+								</div>
+							</div>
+						</div>
+
+					</form>
+					<div>
+						<span class="text-muted">共 <span id="infoTatal">0</span>条，每页<span>20</span>条</span>
+					</div>
+					<div class="box-body no-padding">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>活动名称</th>
+									<th>活动主题</th>
+									<th>报名时间</th>
+									<th>用户电话</th>
+									<th>用户名称</th>
+									<th>用户角色</th>
+									<th>活动状态</th>
+									<th>活动参与状态</th>
+									<th>报名审核状态</th>
+									<th>活动来源</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody id="activeList">
+
+							</tbody>
+						</table>
+						<div class="box-footer ">
+							<div class="pagination no-margin pull-right">
+								<a href="#" class="first" data-action="first">&laquo;</a>
+								<a href="#" class="previous" data-action="previous">&lsaquo;</a>
+								<input type="text" readonly="readonly" data-max-page="40" />
+								<a href="#" class="next" data-action="next">&rsaquo;</a>
+								<a href="#" class="last" data-action="last">&raquo;</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /.box-header -->
+			</div>
+			<!-- /.box -->
+		</section>
+
+		<!--驳回理由-->
+		<section class="pop center-text" id="ReasonRetion">
+			<div class="pop-body" style="    width: 400px; top: 150px; position: relative;">
+				<div class="box">
+					<form class="form-horizontal" id="signupform1" method="get" action="">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-pop="close" name="close">
+									<span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title">审核</h4>
+							</div>
+
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default label-primary pull-left" id="btnPass" data-pop="close" data-status='2' name="name">审核通过</button>
+								<button type="button" class="btn btn-primary" id="ResetPassbtn" name="ResetPassbtn" data-status='3'>驳回</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
+
+		<script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+		<script src="../../plugins/theme/bootstrap/bootstrap.min.js"></script>
+		<!--<script src="../../plugins/theme/js/app.min.js"></script>-->
+		<script src="../../plugins/common/jquery.cookie.js"></script>
+		<script src="../../plugins/common/common.js"></script>
+		<script src="../../plugins/theme/js/index_flot.js"></script>
+		<script src="../../plugins/Pagination/js/pagination.min.js"></script>
+
+		<script src="../../plugins/daterangepicker/moment.min.js"></script>
+		<script src="../../plugins/daterangepicker/daterangepicker.js"></script>
+		<script src="../../plugins/datepicker/bootstrap-datepicker.js"></script>
+		<script src="../../plugins/jQueryValidate/jquery.validate.min.js"></script>
+		<script src="../../plugins/jQueryValidate/messages_zh.js"></script>
+
+		<!--本页面需要的脚本-->
+		<script src="../../plugins/common/mustache.min.js"></script>
+		<script src="../../plugins/common/dataHelper.js"></script>
+		<script src="../../plugins/common/controlsHelper.js"></script>
+		<script src="../../plugins/common/timeHelper.js"></script>
+		<script src="../../interfaceJs/dataValueHelper.js"></script>
+		<script src="../../interfaceJs/userInfoServer.js"></script>
+		<script src="../../interfaceJs/classInfoServer.js"></script>
+		<script src="../../interfaceJs/activeInfoServer.js"></script>
+		<script src="../../js/activeManage/registerList.js?v.1"></script>
+		<!--列表模版-->
+		<script id="activeListTemplate" type="x-tmpl-mustache">
+			{{#lists}}
+			<tr>
+				<td>{{activeName}}</td>
+				<td>{{activeTheme}}</td>
+				<td>{{signTime}}</td>
+				<td>{{userPhone}}</td>
+				<td>{{userName}}</td>
+				<td data-id='{{userRole}}'>{{userRoleName}}</td>
+				<td>{{activeStatusName}}</td>
+				<td data-id='{{registerProgressStatus}}'>{{progressStatusName}}</td>
+				<td data-id='{{approveStatus}}'>{{approveStatusName}}</td>
+				<td data-id="{{source}}">{{sourceName}}</td>
+				<td>
+					<span class="label label-info  updateBtn" data-id="{{registerId}}">修改</span>
+					<span class="label label-info  approveBtn" data-isApprove="{{approveStatus}}" data-id="{{registerId}}">审核</span>
+					<!--<span class="label label-info btnResetPass" data-userId={{userId}}>重置密码</span>-->
+				</td>
+			</tr>
+			{{/lists}}
+
+		</script>
+		<script>
+			(function() {
+				timePicker();
+			})();
+
+			function timePicker() {
+				$('#signStartTime').daterangepicker({
+					singleDatePicker: true
+				}, function(start, end, label) { //格式化日期显示框
+					if(!start._isValid) {
+						$('#signStartTime').val(startDateTemp.format('YYYY-MM-DD'));
+					} else {
+						$('#signStartTime').val(start.format('YYYY-MM-DD'));
+					}
+				}).click(function() {
+					$(document).keydown(function(e) {
+						if(e.keyCode == 17 || e.keyCode == 18) {
+							return false;
+						}
+					});
+				});
+				$('#signEndTime').daterangepicker({
+					singleDatePicker: true
+				}, function(start, end, label) { //格式化日期显示框
+					if(!start._isValid) {
+						$('#signEndTime').val(startDateTemp.format('YYYY-MM-DD'));
+					} else {
+						$('#signEndTime').val(start.format('YYYY-MM-DD'));
+					}
+				}).click(function() {
+					$(document).keydown(function(e) {
+						if(e.keyCode == 17 || e.keyCode == 18) {
+							return false;
+						}
+					});
+				});
+				$('#activeStartTime').daterangepicker({
+					singleDatePicker: true
+				}, function(start, end, label) { //格式化日期显示框
+					if(!start._isValid) {
+						$('#activeStartTime').val(startDateTemp.format('YYYY-MM-DD'));
+					} else {
+						$('#activeStartTime').val(start.format('YYYY-MM-DD'));
+					}
+				}).click(function() {
+					$(document).keydown(function(e) {
+						if(e.keyCode == 17 || e.keyCode == 18) {
+							return false;
+						}
+					});
+				});
+				$('#activeEndTime').daterangepicker({
+					singleDatePicker: true
+				}, function(start, end, label) { //格式化日期显示框
+					if(!start._isValid) {
+						$('#activeEndTime').val(startDateTemp.format('YYYY-MM-DD'));
+					} else {
+						$('#activeEndTime').val(start.format('YYYY-MM-DD'));
+					}
+				}).click(function() {
+					$(document).keydown(function(e) {
+						if(e.keyCode == 17 || e.keyCode == 18) {
+							return false;
+						}
+					});
+				});
+			}
+		</script>
+	</body>
+
+</html>

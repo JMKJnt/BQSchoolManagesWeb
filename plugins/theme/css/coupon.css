@@ -1,0 +1,181 @@
+.box-nav {
+	width: 99%;
+	height: 45px;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+.box-nav-info {
+	width: 20%;
+	height: 100%;
+	position: relative;
+	background-color: #424259;
+	float: left;
+}
+
+.box-nav-info>label {
+	color: white;
+	font-size: 16px;
+	top: 12px;
+	position: relative;
+	padding-left: 20px;
+}
+
+.nav-info-tail-color {
+	background-color: #FFFFFF !important;
+}
+
+.nav-head-radius {
+	border-radius: 7px 0px 0px 7px;
+}
+
+.nav-tail {
+	height: 0;
+	width: 0;
+	border-width: 22px 0px 23px 23px;
+	border-style: solid;
+	border-color: transparent transparent transparent #EEE9E9;
+	/*透明 透明 透明 白*/
+	float: right;
+	position: relative;
+	background-color: #424259;
+}
+
+.nav-tail span {
+	display: block;
+	width: 0;
+	height: 0;
+	border-width: 20px 0 20px 20px;
+	border-style: solid;
+	border-color: transparent transparent transparent #424259;
+	position: absolute;
+	top: -20px;
+	left: -23px;
+}
+
+.nav-tail-select {
+	border-color: transparent transparent transparent #ea6054 !important;
+}
+
+.nav-select {
+	background-color: #ea6054 !important;
+}
+
+.div-coutype {
+	width: 100%;
+	min-height: 46px;
+	height: auto;
+	border: 1px solid #ddd;
+	border-radius: 2px;
+}
+
+.clearfloat {
+	clear: both;
+	height: 0;
+	font-size: 1px;
+	line-height: 0px;
+}
+
+.div-coutype label {
+	font-weight: normal !important;
+}
+
+.coupons-label {
+	display: inline-block;
+	width: 60px;
+	text-align: right;
+}
+
+.coutype-tips {
+	color: #FF2222;
+	text-align: center;
+	font-size: 10px;
+	margin: 0 !important;
+}
+
+.div-coutype input {
+	width: 80px;
+	height: 34px;
+	box-sizing: border-box;
+}
+
+.coutype-info {
+	width: 50%;
+	padding: 5px;
+	float: left;
+}
+
+.div-time {
+	height: 280px;
+	border: 1px solid #ddd;
+	border-radius: 2px;
+}
+
+.div-time>div {
+	margin-top: 10px;
+}
+
+
+/*
+ * 渠道参数
+ */
+
+.channel-info-head {
+	width: 100%;
+	height: 40px;
+	background-color: #424259;
+	border-radius: 5px 5px 0px 0px;
+}
+
+.channel-info-head>label {
+	color: white;
+	font-size: 13px;
+	top: 10px;
+	position: relative;
+}
+
+.c-i-h-l {
+	float: left;
+	padding-left: 10px;
+}
+
+.c-i-h-r {
+	float: right;
+	padding-right: 10px;
+}
+
+.channel-info-details {
+	width: 100%;
+	height: auto;
+	border: 1px solid #d2d6de;
+	border-radius: 0px 0px 5px 5px;
+	padding-top: 10px;
+}
+.channel-width{
+	width: 100px;
+}
+.channel-txt-width{
+	width: 400px;
+}
+.tips-label-color{
+	color: red;
+}
+.store-head{
+	margin-top: 10px;
+}
+.store-check-width{
+	width: 59px;
+}
+.storeParam{
+	width: 300px;
+	height: auto;
+	border: 1px solid #d2d6de;
+	padding-top: 10px;	
+}
+.storeParam input{
+	width:250px;
+}
+.storeParam>div{
+	margin-left: 10px !important;
+	margin-bottom: 3px !important;
+}

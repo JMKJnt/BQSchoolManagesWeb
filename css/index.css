@@ -1,0 +1,102 @@
+.main-header {
+	border-bottom: none !important;
+	max-height: 58px !important;
+}
+
+.slimScrollDiv {
+	height: 1000px !important;
+	box-shadow: 2px 0px 6px #0f2e6a;
+}
+
+.sidebar {
+	height: 1000px !important;
+	background-color: #3d6dc6 !important;
+}
+
+.main-sidebar {
+	padding-top: 0 !important;
+}
+
+.sidebar-menu {
+	top: 25px !important;
+	position: relative;
+}
+
+.span-logo {
+	width: 150px;
+	margin: 0 auto;
+	position: relative;
+	display: block;
+}
+
+.span-logo>img {
+	width: 120px;
+	height: 120px;
+	top: 10px;
+	position: relative;
+}
+
+.theme .sidebar-menu>li.active>a,
+.theme .sidebar-menu>li:hover>a {
+	background: #2c56a5 !important;
+}
+
+.theme .sidebar-menu>li>.treeview-menu {
+	background: #3d6dc6 !important;
+}
+
+.sidebar-menu .treeview-menu>li.active>a,
+.sidebar-menu .treeview-menu>li:hover>a {
+	background: #1f458b !important;
+}
+
+.theme .main-header .navbar {
+	background: #3d6dc6 !important;
+}
+
+.fixed .main-header {
+	background: #3d6dc6 !important;
+}
+
+.main-header>.navbar {
+	border-bottom: 1px solid #0f2e6a !important;
+	max-height: 57px;
+}
+
+.main-sidebar,
+.left-side {
+	z-index: 1101 !important;
+}
+
+#indexTab,
+.moreNav,
+.moreNav .fa {
+	background-color: #c9daf9 !important;
+}
+
+#moreNavBox {
+	background-color: #c9daf9 !important;
+	margin-left: 2px;
+}
+
+#userName {
+	padding-left: 5px;
+}
+
+.nav-tabs>li>a:hover {
+	background-color: #FFFFFF !important;
+	color: #000000 !important;
+	border: 1px solid #c9daf9 !important;
+}
+
+.nav-tabs>li>a {
+	color: #1f458b;
+}
+
+i.fa>img {
+	width: 22px;
+	height: 22px;
+	top: -2px;
+	position: relative;
+	left: -5px;
+}

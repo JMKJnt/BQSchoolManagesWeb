@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+		<meta name="author" content="All-Union.com.cn">
+		<title>修改活动</title>
+		<link rel="stylesheet" href="../../plugins/theme/css/custom-bootstrap-inside.css">
+		<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.css">
+		<link rel="stylesheet" href="../../plugins/daterangepicker/daterangepicker-bs3.css">
+		<link rel="stylesheet" href="../../plugins/Pagination/css/pagination.css" />
+		<link rel="stylesheet" href="../../css/active.css" />
+	</head>
+
+	<body>
+		<section class="content">
+			<h2 class="page-header">修改活动信息</h2>
+			<div class="box">
+				<div class="box-nav">
+					<div class="box-nav-info nav-head-radius nav-select" data-value='1'>
+						<label>1.基础信息</label>
+						<div class="nav-tail">
+							<span class=" nav-tail-select"></span>
+						</div>
+					</div>
+					<div class="box-nav-info" data-value='2'>
+						<label>2图片信息</label>
+						<div class="nav-tail">
+							<span></span>
+						</div>
+					</div>
+					<div class="box-nav-info" data-value='3'>
+						<label>3.参与活动细目</label>
+						<div class="nav-tail nav-info-tail-color">
+							<span class="nav-foots"></span>
+						</div>
+					</div>
+				</div>
+				<div class="box-header">
+					<div data-value='1'>
+						<form class="form-horizontal" id="signupForm1" method="get" action="">
+							<div class="form-group">
+								<label class="col-xs-2 control-label">活动类别：</label>
+								<div class="col-xs-5">
+									<div class="radio" id="activeCate">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-xs-2 control-label">活动名称：</label>
+								<div class="col-xs-5">
+									<input type="text" class="form-control" placeholder="请输入活动名称" maxlength="150" id="activeName" name="activeName">
+								</div>
+							</div>
+
+
+
+							<div class="form-group">
+								<label class="col-xs-2 control-label">期：</label>
+								<div class="col-xs-5">
+									<select id="activityHase_id" name="select">
+										<option value="0001">第一期</option>
+										<option value="0002">第二期</option>
+										<option value="0003">第三期</option>
+										<option value="0004">第四期</option>
+										<option value="0005">第五期</option>
+										<option value="0006">第六期</option>
+										<option value="0007">第七期</option>
+										<option value="0008">第八期</option>
+										<option value="0009">第九期</option>
+										<option value="0010">第十期</option>
+										<option value="0011">第十一期</option>
+										<option value="0012">第十二期</option>
+										<option value="0013">第十三期</option>
+										<option value="0014">第十四期</option>
+										<option value="0015">第十五期</option>
+										<option value="0016">第十六期</option>
+										<option value="0017">第十七期</option>
+										<option value="0018">第十八期</option>
+										<option value="0019">第十九期</option>
+										<option value="0020">第二十期</option>
+										<option value="0021">第二十一期</option>
+										<option value="0022">第二十二期</option>
+										<option value="0023">第二十三期</option>
+										<option value="0024">第二十四期</option>
+									</select>
+								</div>
+							</div>
+
+
+
+
+							<div class="form-group">
+								<label class="col-xs-2 control-label">活动主题：</label>
+								<div class="col-xs-5">
+									<textarea id="activeTheme" name="activeTheme" type="text" style="width: 100%;" rows="2" class="form-control" maxlength="300" placeholder="请输入活动主题"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-xs-2 control-label">活动适用班级：</label>
+								<div class="col-xs-5">
+									<div class="radio" id="activeClassNum">
+
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-xs-2 control-label">报名时间：</label>
+								<div class="col-xs-8">
+									<div class="input-group col-xs-3 pull-left">
+										<div class="input-group-addon">
+											<i class="fa fa-calendar"></i>
+										</div>
+										<input type="text" readonly class="form-control" id="signStartTime" name="signStartTime" placeholder="开始日期">
+									</div>
+									<div class="pull-left timeAnd">至</div>
+									<div class="input-group col-xs-3 pull-left">
+										<div class="input-group-addon">
+											<i class="fa fa-calendar"></i>
+										</div>
+										<input type="text" readonly class="form-control" id="signEndTime" name="signEndTime" placeholder="截止日期">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-xs-2 control-label">活动详情：</label>
+								<div class="col-xs-5">
+									<textarea id="activeDetail" name="activeDetail" type="text" style="width: 100%;" rows="4" class="form-control" maxlength="1300" placeholder="请输入活动主题"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-xs-2 control-label">活动提示模板：</label>
+								<div class="col-xs-5">
+									<textarea id="activityTemplate" name="activityTemplate" type="text" style="width: 100%;" rows="4" class="form-control" maxlength="1300" placeholder="请输入活动模板"></textarea>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="col-xs-2 control-label">活动编码开头：</label>
+								<div class="col-xs-5">
+									<input type="text" class="form-control" placeholder="请输入活动编码开头,例如：A15" maxlength="5" id="activeHeadStr" name="activeHeadStr">
+								</div>
+							</div>
+							<!--<div class="form-group">
+								<label class="col-xs-2 control-label">直播码：</label>
+								<div class="col-xs-5">
+									<input type="text" class="form-control" placeholder="请输入直播码" maxlength="50" id="Zb_code" name="Zb_code">
+								</div>
+							</div>-->
+					
+							<div class="form-group">
+								<label class="col-xs-2 control-label">活动顺序：</label>
+								<div class="col-xs-5">
+									<input type="text" class="form-control" placeholder="请输入顺序" maxlength="10" id="activeSeq" name="activeSeq">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-xs-2 control-label">活动参与人数（初始）：</label>
+								<div class="col-xs-5">
+									<input type="text" class="form-control" placeholder="请输入参与人数" maxlength="10" id="activeNumCy" name="activeNumCy">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-xs-2 control-label">是否需要审核：</label>
+								<div class="col-xs-4">
+									<label class="control-label">
+									<input type="checkbox" checked="checked" id="activeIsApprove" name="activeIsApprove">需要</label>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-xs-2 control-label">是否需要问卷：</label>
+								<div class="col-xs-4">
+									<label class="control-label">
+									<input type="checkbox"  id="activeIsQuestion" name="activeIsQuestion">需要</label>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-xs-2 control-label">状态：</label>
+								<div class="col-xs-4">
+									<label class="control-label">
+									<input type="checkbox" checked="checked" id="userIsStart" name="userIsStart">启用</label>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-xs-1 col-xs-offset-2">
+									<button type="button" class="btn btn-sm btn-primary nextBtn" id="nextBtn1" data-value='1' name="nextBtn">下一步</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div data-value='2' style="display: none;">
+						<form class="form-horizontal" id="signupForm2" method="get" action="">
+							<div class="form-group">
+								<label class="col-xs-2 control-label">活动banner图：</label>
+								<div class="col-xs-2">
+									<img class="mailbox-attachment-icon imgName1 " src="../../plugins/theme/img/nopic.jpg">
+									<div class=" mailbox-attachment-info col-xl-2 ">
+										<input style="display: none;" id="imgName1" name="imgName1" />
+										<!-- 文件上传返回信息显示区 -->
+										<a href="" class="mailbox-attachment-name files img1"><i class="fa fa-paperclip"></i> 选择图片</a>
+
+										<div class="progress progress-xxs">
+											<!-- 文件上传进度条 -->
+											<div class="progress-bar progress-bar-success progress-bar-striped"></div>
+										</div>
+										<span class="mailbox-attachment-size">1,245 KB
+                                         <span class="btn btn-default fileinput-button btn-xs pull-right">
+                                              <i class="fa fa-plus"></i><input type="file" name="files[]" data-index="0"  id="img1" name="img1" multiple>
+                                           </span>
+										</span>
+									</div>
+
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-xs-1 col-xs-offset-2">
+									<button type="button" class="btn btn-sm btn-primary nextBtn" id="nextBtn2" data-value='2' name="nextBtn">下一步</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div data-value='3' style="display: none;">
+						<form class="form-horizontal" id="signupForm3" method="get" action="">
+							<div class="form-group">
+								<label class="col-xs-1"></label>
+								<div class="col-xs-8">
+									<div class="border-left-info pull-left">
+										<p>活动细目选择</p>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-xs-1"></label>
+								<div class="col-xs-10">
+									<div class="box box-solid">
+										<div class="modal-content">
+											<div class="modal-body">
+												<div class="form-horizontal">
+													<!--内容-->
+													<div class="form-group">
+														<label class="col-sm-1 control-label">细目主题:</label>
+														<div class="col-sm-2">
+															<input type="text" class="form-control" placeholder="" id="detailTheme" name="detailTheme">
+														</div>
+														<div class="col-sm-1">
+															<button type="button" class="btn btn-primary" id="ViewDetail" name="ViewDetail">查看</button>
+														</div>
+													</div>
+													<div class="box-body no-padding">
+														<table class="table table-striped">
+															<thead>
+																<tr>
+																	<th class="store-check-width"><input id="allChecked" type="checkbox" />全选</th>
+																	<th>细目名称</th>
+																	<th>细目类别</th>
+																	<th>活动时间</th>
+																	<th>是否公开</th>																	
+																</tr>
+															</thead>
+															<tbody id="detailList">
+															</tbody>
+														</table>
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<p class="text-left tips-label-color">✲共<span id="TotalNumberDetail"></span>个细目，已选中<span id="detailCheckedCount">0</span>个细目✲</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-xs-4 col-xs-offset-2">
+									<button type="button" class="btn btn-sm btn-primary saveBtn" id="saveBtnAll" data-value='4' name="saveBtn">保存</button>
+									<button type="button" class="btn btn-sm btn-primary cancelBtn" id="cancelBtnAll" data-value='4' name="cancelBtn">取消</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+		<script src="../../plugins/theme/bootstrap/bootstrap.min.js"></script>
+		<script src="../../plugins/theme/js/app.min.js"></script>
+		<script src="../../plugins/common/jquery.cookie.js"></script>
+		<script src="../../plugins/common/common.js"></script>
+		<script src="../../plugins/theme/js/index_flot.js"></script>
+		<script src="../../plugins/Pagination/js/pagination.min.js"></script>
+
+		<script src="../../plugins/jQueryfileupload/jquery.ui.widget.js"></script>
+		<script src="../../plugins/jQueryfileupload/jquery.fileupload.js"></script>
+		<script src="../../plugins/jQueryfileupload/jquery.iframe-transport.js"></script>
+		<script src="../../plugins/jQueryfileupload/jquery.xdr-transport.js"></script>
+
+		<script src="../../plugins/daterangepicker/moment.min.js"></script>
+		<script src="../../plugins/jQueryValidate/jquery.validate.min.js"></script>
+		<script src="../../plugins/jQueryValidate/messages_zh.js"></script>
+		<script src="../../plugins/common/regularHelper.js"></script>
+		<script src="../../plugins/daterangepicker/daterangepicker.js"></script>
+		<script src="../../plugins/datepicker/bootstrap-datepicker.js"></script>
+
+		<!--本页面需要的脚本-->
+		<script src="../../plugins/common/mustache.min.js"></script>
+		<script src="../../plugins/common/dataHelper.js"></script>
+		<script src="../../plugins/common/controlsHelper.js"></script>
+		<script src="../../interfaceJs/dataValueHelper.js"></script>
+		<script src="../../plugins/common/timeHelper.js"></script>
+		<script src="../../interfaceJs/activeInfoServer.js"></script>
+		<script src="../../interfaceJs/classInfoServer.js"></script>
+		<script src="../../js/activeManage/updateActive.js"></script>
+
+		<script id="detailListTemplate" type="x-tmpl-mustache">
+			{{#lists}}
+			<tr>
+				<td class="store-check-width" data-id='{{detailId}}'><input type="checkbox" data-id='{{detailId}}' /></td>
+				<td>{{detailTheme}}</td>
+				<td>{{detailCate}}</td>
+				<td>{{detailTime}}</td>
+				<td data-id='{{activeIPublic}}'>{{detailIsPublicName}}</td>
+			</tr>
+			{{/lists}}
+		</script>
+		<script>
+			//上传
+			var imgRegular = /^image\/(jpe?g|png|bmp|gif)$/i;
+			var errorTips = "请上传.jpg .jpeg .bmp .gif .png格式文件";
+			//上传
+			controlsHelper.FileUploadControl(fileUploadUrl, "#img1", "#imgName1", imgRegular, errorTips, ".img1", ".imgName1");
+
+			(function() {
+				timePicker();
+			})();
+
+			function timePicker() {
+				$('#signStartTime').daterangepicker({
+					singleDatePicker: true
+				}, function(start, end, label) { //格式化日期显示框
+					if(!start._isValid) {
+						$('#signStartTime').val(startDateTemp.format('YYYY-MM-DD'));
+					} else {
+						$('#signStartTime').val(start.format('YYYY-MM-DD'));
+					}
+				}).click(function() {
+					$(document).keydown(function(e) {
+						if(e.keyCode == 17 || e.keyCode == 18) {
+							return false;
+						}
+					});
+				});
+				$('#signEndTime').daterangepicker({
+					singleDatePicker: true
+				}, function(start, end, label) { //格式化日期显示框
+					if(!start._isValid) {
+						$('#signEndTime').val(startDateTemp.format('YYYY-MM-DD'));
+					} else {
+						$('#signEndTime').val(start.format('YYYY-MM-DD'));
+					}
+				}).click(function() {
+					$(document).keydown(function(e) {
+						if(e.keyCode == 17 || e.keyCode == 18) {
+							return false;
+						}
+					});
+				});
+
+			}
+		</script>
+	</body>
+
+</html>

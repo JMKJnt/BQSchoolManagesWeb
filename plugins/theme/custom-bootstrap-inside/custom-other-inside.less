@@ -1,0 +1,140 @@
+/*定制模块*/
+body {
+  min-width: 750px;
+  padding: 5px;
+}
+section.content {
+  //background-color: #000;
+  background-color: #f7f7f7;
+}
+
+/*输入验证*/
+input.error{
+  border-color: @brand-danger;
+}
+label.error{
+  color: @brand-danger;
+}
+/*上传*/
+img.mailbox-attachment-icon {
+  width: 198px;
+}
+.fileinput-button {
+  position: relative;
+  overflow: hidden;
+}
+.fileinput-button input[type=file]{
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  direction:ltr;
+}
+.mailbox-attachment-info .progress {
+  margin: 0 0 3px;
+}
+/*弹出的同时需要为section.content 添加.blur*/
+section.pop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-width: 750px;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2000;
+  overflow: auto;
+  text-align: center;
+}
+section.pop .pop-body {
+  text-align: left;
+  margin: auto;
+}
+.blur {
+  filter: url(blur.svg#blur); /* FireFox, Chrome, Opera */
+  -webkit-filter: blur(5px); /* Chrome, Opera */
+  -moz-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+  filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=5, MakeShadow=false); /* IE6~IE9 */
+}
+section.pop .pop-body {
+  padding: 50px;
+}
+  section.pop-sm .pop-body {
+    width: 500px;
+  }
+
+.list-x {
+  list-style:none;
+  padding: 0;
+  margin: 0;
+}
+.list-x li {
+  float: left;
+  padding: 15px;
+}
+input[type=checkbox]{
+  position: relative;
+  top: 2px;
+  margin-right: 2px;
+}
+/*表格中的按钮*/
+table span.label {
+  cursor: pointer;
+  margin-bottom: 1px;
+  display: inline-block;
+}
+
+.border-left-info {
+  border-left: 3px solid @brand-info;
+  margin-left: -10px;
+  padding-left: 10px;
+}
+.timeInput {
+  width: 170px;
+}
+.timeAnd {
+  padding: 0 10px;
+  line-height: 34px;
+}
+.checkboxLH {
+  label{
+    padding-right: 10px;
+    font-weight: normal;
+  }
+  line-height: 34px;
+}
+.tagBox {
+ .btn {
+   margin-right: 10px;
+   border: 1px solid @btn-default-border;
+ }
+  .btn:hover {
+    margin-right: 10px;
+    border: 1px solid @brand-info;
+  }
+  .btn.active {
+    background-color: @brand-info;
+    border-color:  @brand-info;
+  }
+}
+/*下拉菜单*/
+.dropdown-menu[role=menu]{
+  max-height: 200px;
+  overflow-y: auto;
+}
+.errorInfo{
+  color: #d9534f;
+  font-weight: bold;
+}
+
+/*上传组件*/
+.mailbox-attachment-info.upload-group {
+  background-color: transparent;
+
+}
+

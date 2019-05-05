@@ -1,0 +1,53 @@
+@charset "utf-8";
+
+
+th{white-space: nowrap}
+
+/* votebox */
+
+.votebox {
+	width: 400px;
+	height: 60px;
+	margin-left: 15px;
+	text-align: left;
+	position: absolute;
+	z-index: 66;
+	top: -6px;
+	right: 46px;
+}
+
+
+/* barbox */
+
+.barbox {
+	height: 16px;
+	line-height: 16px;
+	overflow: hidden;
+}
+
+.barbox dt a {
+	color: #0048CC;
+}
+
+.barbox dd {
+	float: left;
+}
+
+.barbox dd.last {
+	color: #999;
+}
+
+.barbox dd.barline {
+	width: 200px;
+	background: url(../../../img/jdtbg.png) left center no-repeat;
+	height: 16px;
+	overflow: hidden;
+	display: inline;
+}
+
+.barbox dd.barline div.charts {
+	height: 16px;
+	overflow: hidden;
+	background: url(../../../img/barbg.gif) right center repeat-x;
+	border-radius: 8px;
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+		<meta name="author" content="All-Union.com.cn">
+		<title>设置</title>
+		<link rel="stylesheet" href="../../plugins/theme/css/custom-bootstrap-inside.css">
+		<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.css">
+		<link rel="stylesheet" href="../../plugins/Pagination/css/pagination.css">
+	</head>
+
+	<body>
+		<!-- Main content -->
+		<section class="content">
+			<h2 class="page-header">设置</h2>
+			<div class="box">
+				<div class="box-body">
+					<div class="row">
+						<div id="userNameNum" class="col-xs-4">
+							登录账户：
+						</div>
+						<div class="col-xs-2">
+							<button id="updatePassword" class="btn btn-success btn-sm" style="background-color: #3d6dc6 !important;" data-pop="pop2" name="pop2">修改登录密码</button>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+			<!--box-->
+		</section>
+		<section class="pop center-text" data-pop="pop2" id="pop2">
+			<div class="pop-body">
+				<div class="box">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-pop="close" name="namebut">
+								<span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title">修改登录密码</h4>
+						</div>
+						<div class="box-body">
+							<div class="form-group">
+								<label>手机号</label>
+
+								<div class="input-group">
+									<div class="input-group-addon">
+										<i class="fa fa-phone"></i>
+									</div>
+									<input id="phonenum" type="text" class="form-control" placeholder="" readonly="true" maxlength="11">
+								</div>
+								<!-- /.input group -->
+							</div>
+							<!-- /.form group -->
+							<div class="form-group">
+								<label>旧密码</label>
+
+								<div class="input-group has-feedback">
+									<div class="input-group-addon">
+										<i class="fa fa-key"></i>
+									</div>
+									<input id="oldPassword" type="password" class="form-control" placeholder="(必填)输入旧的登录密码" maxlength="20">
+								</div>
+								<!-- /.input group -->
+							</div>
+							<!-- /.form group -->
+							<div class="form-group">
+								<label>新密码</label>
+
+								<div class="input-group">
+									<div class="input-group-addon">
+										<i class="fa fa-lock"></i>
+									</div>
+									<input id="newPassword" type="password" class="form-control" placeholder="(必填)设置新的登录密码" maxlength="20">
+								</div>
+								<!-- /.input group -->
+							</div>
+							<!-- /.form group -->
+							<div class="form-group">
+								<label>确认密码</label>
+
+								<div class="input-group has-feedback">
+									<div class="input-group-addon">
+										<i class="fa fa-lock"></i>
+									</div>
+									<input id="newPasswordTwo" type="password" class="form-control" placeholder="(必填)再次输入新的登录密码" maxlength="20">
+								</div>
+								<!-- /.input group -->
+							</div>
+							<!-- /.form group -->
+							<button id="savePassword" class="btn btn-primary center-block">保存</button>
+						</div>
+						<!-- /.box-body -->
+					</div>
+				</div>
+			</div>
+
+		</section>
+		<script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+		<script src="../../plugins/theme/bootstrap/bootstrap.min.js"></script>
+		<script src="../../plugins/theme/js/app.min.js"></script>
+		<script src="../../plugins/theme/js/index_flot.js"></script>
+		
+		<!--本页面需要的脚本-->
+		<script src="../../plugins/common/jquery.cookie.js"></script>
+		<script src="../../plugins/common/dataHelper.js"></script>
+		<script src="../../plugins/common/common.js"></script>
+		<script src="../../plugins/common/controlsHelper.js"></script>
+		<script src="../../interfaceJs/userInfoServer.js"></script>
+		<script src="../../js/setting/setting.js"></script>
+	</body>
+
+</html>

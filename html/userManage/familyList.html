@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+		<meta name="author" content="All-Union.com.cn">
+		<title>家庭成员列表</title>
+		<link rel="stylesheet" href="../../plugins/theme/css/custom-bootstrap-inside.css">
+		<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.css">
+		<link rel="stylesheet" href="../../plugins/daterangepicker/daterangepicker-bs3.css">
+		<link rel="stylesheet" href="../../plugins/Pagination/css/pagination.css" />
+		<link rel="stylesheet" href="../../plugins/theme/css/barbox.css" />
+		<style type="text/css">
+			#ticketCodePop {
+				padding: 200px !important;
+			}
+			
+			#chartsBarG {
+				width: 200px;
+				top: 25px;
+				z-index: 99;
+				position: absolute;
+			}
+			
+			.min-w-m {
+				min-width: 560px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<section class="content">
+			<h2 class="page-header">家庭成员列表</h2>
+			<div class="box">
+				<div class="box-header ">
+					<form class="form-horizontal" id="signupForm" method="get" action="">
+							<div class="col-xs-12">
+							<div class="col-xs-6 min-w-m">
+								<div class="form-group">
+									<label class="col-xs-4 control-label">家长名称搜索：</label>
+									<div class="col-xs-6">
+										<input type="text" class="form-control" placeholder="输入用户名称" id="familyName" name="familyName">
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-6 min-w-m">
+								<div class="form-group">
+									<label class="col-xs-4 control-label">电话搜索：</label>
+									<div class="col-xs-6">
+										<input type="text" class="form-control" placeholder="输入用户电话" id="familyPhone" name="familyPhone">
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<div class="col-xs-12">
+							<div class="col-xs-6 min-w-m">
+								<div class="form-group">
+									<label class="col-xs-4 control-label">关系用户：</label>
+									<div class="col-xs-6">
+										<div class="btn-group">
+											<button type="button" class="btn btn-default btn-flat familyUserId" name="familyUserId">全部</button>
+											<button type="button" class="btn btn-default btn-flat dropdown-toggle" data-toggle="dropdown" name="name">
+												<span class="caret"></span>
+												<span class="sr-only"></span>
+											</button>
+											<ul class="dropdown-menu" role="menu" id="familyUserId">
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12">
+							<div class="col-xs-6 min-w-m">
+								<div class="form-group">
+									<div class="col-xs-4">
+									</div>
+									<div class="col-xs-6">
+										<button type="button" class="btn btn-primary" id="query">查询</button>
+										<label class="text-blue text-right" id="tipsError"></label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+					<div>
+						<span class="text-muted">共 <span id="infoTatal">1</span>条，每页<span>20</span>条</span>
+						<div class="pull-right">
+							<button class="btn btn-primary btn-sm " id="familyAdd">新增家庭成员信息</button>
+						</div>
+					</div>
+					<div class="box-body no-padding">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>家长名称</th>
+									<th>联系电话</th>
+									<th>亲属关系</th>
+									<th>关系人</th>
+									<th>状态</th>
+									<th>邮箱</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody id="familyList">
+
+							</tbody>
+						</table>
+						<div class="box-footer ">
+							<div class="pagination no-margin pull-right">
+								<a href="#" class="first" data-action="first">&laquo;</a>
+								<a href="#" class="previous" data-action="previous">&lsaquo;</a>
+								<input type="text" readonly="readonly" data-max-page="40" />
+								<a href="#" class="next" data-action="next">&rsaquo;</a>
+								<a href="#" class="last" data-action="last">&raquo;</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /.box-header -->
+			</div>
+			<!-- /.box -->
+		</section>
+
+		<script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+		<script src="../../plugins/theme/bootstrap/bootstrap.min.js"></script>
+		<!--<script src="../../plugins/theme/js/app.min.js"></script>-->
+		<script src="../../plugins/common/jquery.cookie.js"></script>
+		<script src="../../plugins/common/common.js"></script>
+		<script src="../../plugins/theme/js/index_flot.js"></script>
+		<script src="../../plugins/Pagination/js/pagination.min.js"></script>
+
+		<script src="../../plugins/daterangepicker/moment.min.js"></script>
+		<script src="../../plugins/daterangepicker/daterangepicker.js"></script>
+		<script src="../../plugins/datepicker/bootstrap-datepicker.js"></script>
+		<script src="../../plugins/jQueryValidate/jquery.validate.min.js"></script>
+		<script src="../../plugins/jQueryValidate/messages_zh.js"></script>
+
+		<!--本页面需要的脚本-->
+		<script src="../../plugins/common/mustache.min.js"></script>
+		<script src="../../plugins/common/dataHelper.js"></script>
+		<script src="../../plugins/common/controlsHelper.js"></script>
+		<script src="../../plugins/common/timeHelper.js"></script>
+		<script src="../../interfaceJs/dataValueHelper.js"></script>
+		<script src="../../interfaceJs/userInfoServer.js"></script>
+		<script src="../../js/userManage/familyList.js"></script>
+		<!--列表模版-->
+		<script id="familyListTemplate" type="x-tmpl-mustache">
+			{{#lists}}
+			<tr>
+				<td>{{familyName}}</td>
+				<td>{{familyPhone}}</td>
+				<td data-id="{{familyCate}}">{{familyCateName}}</td>
+				<td data-id="{{familyUserId}}">{{familyUserName}}</td>
+				<td data-id="{{status}}"> {{statusName}}</td>
+				<td>{{familyEmail}}</td>
+				<td>
+					<span class="label label-info  updateBtn" data-id="{{familyId}}">修改</span>
+					<!--<span class="label label-info btnResetPass" data-userId={{userId}}>重置密码</span>-->
+				</td>
+			</tr>
+			{{/lists}}
+
+		</script>
+	</body>
+
+</html>

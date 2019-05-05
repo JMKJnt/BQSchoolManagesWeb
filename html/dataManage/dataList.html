@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+		<meta name="author" content="All-Union.com.cn">
+		<title>码表子表信息列表</title>
+		<link rel="stylesheet" href="../../plugins/theme/css/custom-bootstrap-inside.css">
+		<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.css">
+		<link rel="stylesheet" href="../../plugins/daterangepicker/daterangepicker-bs3.css">
+		<link rel="stylesheet" href="../../plugins/Pagination/css/pagination.css" />
+	</head>
+
+	<body>
+		<section class="content">
+			<h2 class="page-header">码表子表信息列表</h2>
+			<div class="box">
+				<div class="box-header ">
+					<form class="form-horizontal" method="get" action="">
+						<div class="form-group">
+							<label class="col-xs-2 control-label">主表名称：</label>
+							<div class="col-xs-2">
+								<label class="control-label" id="conditionName"></label>
+							</div>
+							<div class="col-xs-offset-1 col-xs-2">
+								<button type="button" class="btn btn-primary" id="searchBtn">查询</button>
+								<button type="button" class="btn btn-primary" id="btnInsert">添加子表信息</button>
+							</div>
+						</div>
+					</form>
+
+					<div class="box-body no-padding">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>码表名称</th>
+									<th>编码</th>
+									<!--<th>上级</th>-->
+									<th>码表主表信息</th>
+									<th>字符1</th>
+									<th>字符2</th>
+									<th>字符3</th>
+									<th>字符4</th>
+									<th>字符5</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody id="dataList">
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="pop center-text" data-pop="pop2" id="pop2">
+			<div class="pop-body">
+				<div class="box">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-pop="close">
+									<span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title">子表新增信息</h4>
+						</div>
+						<div class="modal-body">
+							<div class="box-body no-padding box-header">
+								<form class="form-horizontal" id="signupForm1" method="get" action="">
+									<div class="form-group">
+										<label class="col-xs-2 control-label">名称：</label>
+										<div class="col-xs-4">
+											<input id="dName" name="dName" type="text" class="form-control" placeholder="(必填)" maxlength="30">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-xs-2 control-label">编码：</label>
+										<div class="col-xs-4">
+											<input id="dCode" name="dCode" type="text" class="form-control" placeholder="(必填)" maxlength="40">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-xs-2 control-label">主表：</label>
+										<div class="col-xs-4">
+											<label class="control-label" id="dictionary">主表：</label>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-xs-2 control-label">字符1：</label>
+										<div class="col-xs-4">
+											<input id="dString1" name="dString1" type="text" class="form-control" placeholder="(选填)" maxlength="80">
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-xs-2 control-label">字符2：</label>
+										<div class="col-xs-4">
+											<input id="dString2" name="dString2" type="text" class="form-control" placeholder="(选填)" maxlength="80">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-xs-2 control-label">字符3：</label>
+										<div class="col-xs-4">
+											<input id="dString3" name="dString3" type="text" class="form-control" placeholder="(选填)" maxlength="80">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-xs-2 control-label">字符4：</label>
+										<div class="col-xs-4">
+											<input id="dString4" name="dString4" type="text" class="form-control" placeholder="(选填)" maxlength="80">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-xs-2 control-label">字符5：</label>
+										<div class="col-xs-4">
+											<input id="dString5" name="dString5" type="text" class="form-control" placeholder="(选填)" maxlength="80">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-xs-2 control-label">顺序：</label>
+										<div class="col-xs-4">
+											<input id="dSeqno" name="dSeqno" type="text" class="form-control" placeholder="(必填)" maxlength="10">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-xs-2 control-label">是否有效：</label>
+										<div class="col-xs-4">
+											<select class="form-control" id="selectIsValid" name="select">
+												<option value="1" selected="selected">是</option>
+												<option value="0">否</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-xs-2 control-label">备注：</label>
+										<div class="col-xs-4">
+											<input id="dRemark" name="dRemark" type="text" class="form-control" placeholder="(选填)" maxlength="80">
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-xs-offset-2 col-xs-4">
+											<button type="button" name="button" class="btn btn-primary" id="saveBtnInsert">保存</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="pop center-text" data-pop="pop3" id="pop3">
+			<div class="pop-body">
+				<div class="box">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-pop="close">
+									<span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title">子表修改信息</h4>
+						</div>
+						<div class="modal-body">
+							<div class="box-body no-padding box-header">
+								<form class="form-horizontal" id="signupForm2" method="get" action="">
+									<div class="form-group">
+										<label class="col-xs-2 control-label">名称：</label>
+										<div class="col-xs-4">
+											<input id="udName" name="udName" type="text" class="form-control" placeholder="(必填)" maxlength="30">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-xs-2 control-label">编码：</label>
+										<div class="col-xs-4">
+											<input id="udCode" name="udCode" type="text" class="form-control" placeholder="(必填)" maxlength="40">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-xs-2 control-label">主表：</label>
+										<div class="col-xs-4">
+											<label class="control-label" id="udictionary">主表：</label>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-xs-2 control-label">字符1：</label>
+										<div class="col-xs-4">
+											<input id="udString1" name="udString1" type="text" class="form-control" placeholder="(选填)" maxlength="80">
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-xs-2 control-label">字符2：</label>
+										<div class="col-xs-4">
+											<input id="udString2" name="udString2" type="text" class="form-control" placeholder="(选填)" maxlength="80">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-xs-2 control-label">字符3：</label>
+										<div class="col-xs-4">
+											<input id="udString3" name="udString3" type="text" class="form-control" placeholder="(选填)" maxlength="80">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-xs-2 control-label">字符4：</label>
+										<div class="col-xs-4">
+											<input id="udString4" name="udString4" type="text" class="form-control" placeholder="(选填)" maxlength="80">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-xs-2 control-label">字符5：</label>
+										<div class="col-xs-4">
+											<input id="udString5" name="udString5" type="text" class="form-control" placeholder="(选填)" maxlength="80">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-xs-2 control-label">顺序：</label>
+										<div class="col-xs-4">
+											<input id="udSeqno" name="udSeqno" type="text" class="form-control" placeholder="(必填)" maxlength="10">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-xs-2 control-label">是否有效：</label>
+										<div class="col-xs-4">
+											<select class="form-control" id="uselectIsValid" name="select">
+												<option value="1" selected="selected">是</option>
+												<option value="0">否</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-xs-2 control-label">备注：</label>
+										<div class="col-xs-4">
+											<input id="udRemark" name="udRemark" type="text" class="form-control" placeholder="(选填)" maxlength="80">
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-xs-offset-2 col-xs-4">
+											<button type="button" name='button' class="btn btn-primary" id="saveBtnUpdate">保存</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+		<script src="../../plugins/theme/bootstrap/bootstrap.min.js"></script>
+		<script src="../../plugins/theme/js/app.min.js"></script>
+		<script src="../../plugins/common/jquery.cookie.js"></script>
+		<script src="../../plugins/common/common.js"></script>
+		<script src="../../plugins/theme/js/index_flot.js"></script>
+		<script src="../../plugins/Pagination/js/pagination.min.js"></script>
+
+		<script src="../../plugins/jQueryValidate/jquery.validate.min.js"></script>
+		<script src="../../plugins/jQueryValidate/messages_zh.js"></script>
+		<script src="../../plugins/common/regularHelper.js"></script>
+		<script src="../../plugins/jQueryValidate/additional-methods.min.js"></script>
+
+		<script src="../../plugins/daterangepicker/moment.min.js"></script>
+		<script src="../../plugins/daterangepicker/daterangepicker.js"></script>
+		<script src="../../plugins/datepicker/bootstrap-datepicker.js"></script>
+
+		<!--本页面需要的脚本-->
+		<script src="../../plugins/common/mustache.min.js"></script>
+		<script src="../../plugins/common/dataHelper.js"></script>
+		<script src="../../plugins/common/controlsHelper.js"></script>
+		<script src="../../interfaceJs/dataValueHelper.js?secret=5f33f46241f8406fb4c28a636642b2e3"></script>
+		<script src="../../js/dataManage/dataList.js"></script>
+
+		<!--列表模版-->
+		<script id="dataListTemplate" type="x-tmpl-mustache">
+			{{#lists}}
+			<tr>
+				<td>{{data_name}}</td>
+				<td>{{data_code}}</td>
+				<!--<td>{{data_parentName}}</td>-->
+				<td>{{data_dictName}}</td>
+				<td>{{data_string1}}</td>
+				<td>{{data_string2}}</td>
+				<td>{{data_string3}}</td>
+				<td>{{data_string4}}</td>
+				<td>{{data_string5}}</td>
+				<td>
+					<span data-id="{{data_id}}" data-name='{{data_name}}' class="btnDataUpdate label label-primary ">改</span>
+				</td>
+			</tr>
+			{{/lists}}
+		</script>
+		<script>
+			$.validator.setDefaults({
+				debug: true
+			});
+
+			function fromValidate() {
+				return $("#signupForm1").validate({
+					/* 设置验证规则 */
+					rules: {
+						dName: {
+							required: true,
+							isSpaces: true
+						},
+						dCode: {
+							required: true,
+							isSpaces: true
+						},
+						dSeqno: {
+							required: true,
+							isInteger: true
+						}
+					},
+					/**/
+					/* 设置错误信息 */
+					messages: {
+						dName: {
+							required: "请输入名称",
+							isSpaces: "不能包含空格"
+						},
+						dCode: {
+							required: "请输入code",
+							isSpaces: "不能包含空格"
+						},
+						dSeqno: {
+							required: "请输入顺序",
+							isInteger: "顺序只能位数字"
+						}
+					},
+					/* 设置错误信息提示DOM */
+					errorPlacement: function(error, element) {
+						error.appendTo(element.parent());
+					},
+				});
+			};
+
+			function fromValidate2() {
+				return $("#signupForm2").validate({
+					/* 设置验证规则 */
+					rules: {
+						udName: {
+							required: true,
+							isSpaces: true
+						},
+						udCode: {
+							required: true,
+							isSpaces: true
+						},
+						udSeqno: {
+							required: true,
+							isInteger: true
+						}
+					},
+					/**/
+					/* 设置错误信息 */
+					messages: {
+						udName: {
+							required: "请输入名称",
+							isSpaces: "不能包含空格"
+						},
+						udCode: {
+							required: "请输入code",
+							isSpaces: "不能包含空格"
+						},
+						udSeqno: {
+							required: "请输入顺序",
+							isInteger: "顺序只能位数字"
+						}
+					},
+					/* 设置错误信息提示DOM */
+					errorPlacement: function(error, element) {
+						error.appendTo(element.parent());
+					},
+				});
+			};
+		</script>
+
+	</body>
+
+</html>
